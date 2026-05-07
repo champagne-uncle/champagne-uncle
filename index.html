@@ -338,9 +338,33 @@
 
     /* ─── CHAMPAGNES ─── */
     #champagnes { background: var(--dark-2); }
+    .variety-section { margin-bottom: 4rem; }
+    .variety-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .variety-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--gold);
+    }
+    .variety-badge {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(250,247,240,0.1);
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+    }
     .champ-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: rgba(201,168,76,0.07);
     }
@@ -386,6 +410,9 @@
       border: 1px solid rgba(201,168,76,0.2);
       color: rgba(201,168,76,0.6);
       border-radius: 100px;
+    }
+    @media (max-width: 768px) {
+      .champ-grid { grid-template-columns: 1fr; }
     }
 
     /* ─── PHILOSOPHY ─── */
@@ -668,56 +695,109 @@
     <div class="eyebrow">Personal Cellar</div>
     <h2 class="sec-title">Champagnes that<br><em>changed everything</em></h2>
     <div class="rule"></div>
-    <div class="champ-grid">
-
-      <div class="champ-card">
-        <div class="champ-num">01</div>
-        <div class="champ-house">Jacques Selosse</div>
-        <div class="champ-cuvee">Substance · Avize Grand Cru</div>
-        <div class="champ-notes">The champagne that redefined everything I thought I knew. Oxidative aging, solera system, hazelnut and dried fruit complexity that demands your full attention.</div>
-        <span class="champ-type">RM · Blanc de Blancs</span>
+    <!-- CHARDONNAY -->
+    <div class="variety-section">
+      <div class="variety-header">
+        <div class="variety-name">Chardonnay</div>
+        <span class="variety-badge">Blanc de Blancs · Côte des Blancs</span>
       </div>
+      <div class="champ-grid">
 
-      <div class="champ-card">
-        <div class="champ-num">02</div>
-        <div class="champ-house">Krug</div>
-        <div class="champ-cuvee">Grande Cuvée · Reims</div>
-        <div class="champ-notes">Up to 120 reserve wines blended into one masterpiece. Walnut, honey, brioche toast. This is what unhurried craftsmanship tastes like.</div>
-        <span class="champ-type">Grand Maison · NV</span>
+        <div class="champ-card">
+          <div class="champ-num">01</div>
+          <div class="champ-house">Jacques Selosse</div>
+          <div class="champ-cuvee">Substance · Avize Grand Cru</div>
+          <div class="champ-notes">The champagne that redefined everything. Oxidative aging, solera system — hazelnut, roasted brioche, honeyed apricot, dried white blossoms. Not just a wine. A statement.</div>
+          <span class="champ-type">RM · Blanc de Blancs</span>
+        </div>
+
+        <div class="champ-card">
+          <div class="champ-num">02</div>
+          <div class="champ-house">Larmandier-Bernier</div>
+          <div class="champ-cuvee">Terre de Vertus · Vertus 1er Cru</div>
+          <div class="champ-notes">Biodynamic pioneer. Non-dosé. Lemon zest, herbs, chalk. Fifteen hectares farmed with absolute conviction. Nothing added, nothing taken away — pure terroir.</div>
+          <span class="champ-type">RM · Biodynamic · Non-Dosé</span>
+        </div>
+
+        <div class="champ-card">
+          <div class="champ-num">03</div>
+          <div class="champ-house">Pierre Péters</div>
+          <div class="champ-cuvee">Cuvée de Réserve · Le Mesnil-sur-Oger</div>
+          <div class="champ-notes">The chalk of Le Mesnil in its most honest form. Lemon zest, white peach, flinty minerality — a precision that makes you want to learn geology.</div>
+          <span class="champ-type">RM · Blanc de Blancs · Grand Cru</span>
+        </div>
+
       </div>
+    </div>
 
-      <div class="champ-card">
-        <div class="champ-num">03</div>
-        <div class="champ-house">Pierre Péters</div>
-        <div class="champ-cuvee">Blanc de Blancs · Le Mesnil</div>
-        <div class="champ-notes">Chalk terroir in its purest form. Lemon zest, white peach, and a mineral precision that makes you want to learn geology.</div>
-        <span class="champ-type">RM · Blanc de Blancs</span>
+    <!-- PINOT NOIR -->
+    <div class="variety-section">
+      <div class="variety-header">
+        <div class="variety-name">Pinot Noir</div>
+        <span class="variety-badge">Montagne de Reims · Vallée de la Marne</span>
       </div>
+      <div class="champ-grid">
 
-      <div class="champ-card">
-        <div class="champ-num">04</div>
-        <div class="champ-house">Egly-Ouriet</div>
-        <div class="champ-cuvee">Les Vignes de Vrigny · Ambonnay</div>
-        <div class="champ-notes">Pinot Meunier finally given the respect it deserves. Wild strawberry, red fruit, earth. Heavy. Honest. Unforgettable.</div>
-        <span class="champ-type">RM · Blanc de Noirs</span>
+        <div class="champ-card">
+          <div class="champ-num">04</div>
+          <div class="champ-house">Henri Giraud</div>
+          <div class="champ-cuvee">Hommage au Pinot Noir · Aÿ Grand Cru</div>
+          <div class="champ-notes">A symphony of power and finesse from the Grand Cru of Aÿ. Red berries, toasted brioche, pink grapefruit, subtle oak from Argonne forest barrels. Deeply vinous.</div>
+          <span class="champ-type">RM · Blanc de Noirs · Grand Cru</span>
+        </div>
+
+        <div class="champ-card">
+          <div class="champ-num">05</div>
+          <div class="champ-house">Egly-Ouriet</div>
+          <div class="champ-cuvee">Grand Cru Brut · Ambonnay</div>
+          <div class="champ-notes">Low yields, long aging — this is what Ambonnay Grand Cru Pinot Noir really means. Wild strawberry, dark cherry, earth, spice. Heavy, honest, unforgettable.</div>
+          <span class="champ-type">RM · Grand Cru · Ambonnay</span>
+        </div>
+
+        <div class="champ-card">
+          <div class="champ-num">06</div>
+          <div class="champ-house">Bollinger</div>
+          <div class="champ-cuvee">Special Cuvée · Aÿ</div>
+          <div class="champ-notes">60% Pinot Noir, aged in oak. The House of Aÿ's purest expression — roasted apple, peach, red fruit, fine mousse. Power and elegance in perfect balance.</div>
+          <span class="champ-type">Grand Maison · Pinot Noir Dominant</span>
+        </div>
+
       </div>
+    </div>
 
-      <div class="champ-card">
-        <div class="champ-num">05</div>
-        <div class="champ-house">Larmandier-Bernier</div>
-        <div class="champ-cuvee">Terre de Vertus · Vertus 1er Cru</div>
-        <div class="champ-notes">Biodynamic. Non-dosé. Lemon, herbs, chalky minerality. Nothing added, nothing taken away. Just terroir speaking.</div>
-        <span class="champ-type">RM · Biodynamic</span>
+    <!-- PINOT MEUNIER -->
+    <div class="variety-section">
+      <div class="variety-header">
+        <div class="variety-name">Pinot Meunier</div>
+        <span class="variety-badge">The Forgotten Grape · Rediscovered</span>
       </div>
+      <div class="champ-grid">
 
-      <div class="champ-card">
-        <div class="champ-num">06</div>
-        <div class="champ-house">Dom Pérignon</div>
-        <div class="champ-cuvee">Vintage · Épernay</div>
-        <div class="champ-notes">Made only in exceptional years. Each bottle a time capsule. White flowers, citrus, mineral tension. The reason champagne has a mythology.</div>
-        <span class="champ-type">Grand Maison · Vintage</span>
+        <div class="champ-card">
+          <div class="champ-num">07</div>
+          <div class="champ-house">Jérôme Prévost</div>
+          <div class="champ-cuvee">La Closerie Les Béguines · Gueux</div>
+          <div class="champ-notes">2.2 hectares of old-vine Meunier, 1950s massale selection. Amber gold, field blend energy — stone fruit, floral lift, earthy depth. One of grower champagne's most revered names.</div>
+          <span class="champ-type">RM · 100% Pinot Meunier</span>
+        </div>
+
+        <div class="champ-card">
+          <div class="champ-num">08</div>
+          <div class="champ-house">Benoît Déhu</div>
+          <div class="champ-cuvee">Initiation · Vallée de la Marne</div>
+          <div class="champ-notes">Zero dosage, no malolactic, oak-fermented Meunier from a perpetual solera. Toast, cream, toffee, remarkable persistence. A studious reimagining of a misunderstood grape.</div>
+          <span class="champ-type">RM · Zero Dosage · Solera</span>
+        </div>
+
+        <div class="champ-card">
+          <div class="champ-num">09</div>
+          <div class="champ-house">Moussé Fils</div>
+          <div class="champ-cuvee">L'Or d'Eugène · Cuisles</div>
+          <div class="champ-notes">A perpetual reserve spanning decades — 80% Meunier, 20% Pinot Noir. Poached pear, apple, mineral backbone, extraordinary length. Meunier finally given its crown.</div>
+          <span class="champ-type">RM · Perpetuelle · Blanc de Noirs</span>
+        </div>
+
       </div>
-
     </div>
   </div>
 </section>
