@@ -513,6 +513,142 @@
     }
     .btn-outline:hover { background: var(--gold-dim); border-color: var(--gold); }
 
+    /* ─── WINE OF THE MONTH ─── */
+    #wine-of-month {
+      background: var(--dark-2);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .wom-card {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 4rem;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 2px;
+      padding: 3.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .wom-img-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+      padding: 2rem 1rem;
+      min-height: 420px;
+    }
+    .wom-bottle {
+      width: 100%;
+      max-width: 220px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 32px rgba(201,168,76,0.25));
+      transition: transform 0.4s ease;
+    }
+    .wom-bottle:hover { transform: scale(1.04) translateY(-4px); }
+    .wom-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.35);
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+    .wom-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .wom-name em { color: var(--gold); font-style: italic; }
+    .wom-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.2rem;
+    }
+    .wom-score {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    .score-badge {
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+    }
+    .score-source {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .wom-divider {
+      width: 3rem;
+      height: 1px;
+      background: rgba(201,168,76,0.4);
+      margin-bottom: 1.2rem;
+    }
+    .wom-notes {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: rgba(250,247,240,0.78);
+      margin-bottom: 1.4rem;
+    }
+    .wom-quote {
+      border-left: 2px solid var(--gold);
+      padding: 0.6rem 1rem;
+      margin-bottom: 1.6rem;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: rgba(201,168,76,0.05);
+    }
+    .wom-quote cite {
+      display: block;
+      margin-top: 0.4rem;
+      font-style: normal;
+      font-size: 0.78rem;
+      color: var(--gold);
+    }
+    .wom-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .wom-spec {
+      font-size: 0.8rem;
+      color: rgba(250,247,240,0.65);
+    }
+    .wom-spec span {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.15rem;
+    }
+    .wom-buy {
+      font-size: 0.9rem;
+      padding: 0.9rem 2rem;
+      letter-spacing: 0.08em;
+    }
+    @media (max-width: 768px) {
+      .wom-card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+      .wom-img-wrap { min-height: 280px; }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       padding: 2.5rem;
@@ -841,6 +977,53 @@
         <div class="phil-n">03</div>
         <div class="phil-t">Grow Something</div>
         <div class="phil-d">There is no shortcut to understanding wine like tending vines yourself. Bau Vineyard isn't a business. It's a classroom with roots in the ground.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WINE OF THE MONTH -->
+<section id="wine-of-month">
+  <div class="inner">
+    <div class="eyebrow" style="text-align:center;">Wine of the Month</div>
+    <h2 class="sec-title" style="text-align:center;">June Pick<br><em>by Champagne Uncle</em></h2>
+    <div class="rule" style="margin: 0 auto 2.5rem;"></div>
+    <div class="wom-card">
+      <div class="wom-img-wrap">
+        <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/unisson.png"
+             alt="Franck Bonville Unisson Grand Cru Blanc de Blancs"
+             class="wom-bottle" />
+      </div>
+      <div class="wom-content">
+        <div class="wom-badge">Grand Cru · Blanc de Blancs · Avize</div>
+        <h3 class="wom-name">Franck Bonville<br><em>Unisson</em></h3>
+        <p class="wom-sub">Champagne Grand Cru · 100% Chardonnay · Côte des Blancs</p>
+        <div class="wom-score">
+          <span class="score-badge">92 pts</span>
+          <span class="score-source">Wine Advocate</span>
+        </div>
+        <div class="wom-divider"></div>
+        <p class="wom-notes">
+          A salty, authoritative nose of white orchard fruit, lemon oil, subtle spice and chalk mineral. 
+          On the palate — creamy brioche, yuzu citrus, fine bubbles and a vivid, stony finish of 
+          impressive length. Entirely from old-vine holdings in the grand cru of Avize, aged nearly 
+          five years on the lees before disgorgement. Extra Brut dosage at just 5–6.7 g/L keeps 
+          everything sharp and precise.
+        </p>
+        <blockquote class="wom-quote">
+          "Fantastic creaminess, fine brioche toast and a core of Yuzu citrus — 
+          everything I want in Chardonnay from Champagne."
+          <cite>— K&L Wines, January 2025</cite>
+        </blockquote>
+        <div class="wom-specs">
+          <div class="wom-spec"><span>Producer</span>Franck Bonville</div>
+          <div class="wom-spec"><span>Style</span>Blanc de Blancs · Extra Brut</div>
+          <div class="wom-spec"><span>Origin</span>Avize, Grand Cru · Côte des Blancs</div>
+          <div class="wom-spec"><span>Dosage</span>5–6.7 g/L · 5 yrs on lees</div>
+        </div>
+        <a href="https://crystalyj.wineroute.co.kr/p/547200" target="_blank" class="btn btn-primary wom-buy">
+          🛒 Purchase Now
+        </a>
       </div>
     </div>
   </div>
