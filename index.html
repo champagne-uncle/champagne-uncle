@@ -852,12 +852,15 @@
 
     <!-- Search -->
     <div style="margin-top:2.5rem; position:relative;">
-      <input id="tastingSearch" type="text" placeholder="Search by producer, vintage, style, grape..."
+      <input id="tastingSearch" type="text" placeholder="Search — Krug, Blanc de Blancs, 2009, Merfy..."
              oninput="tastingFilter(this.value)"
+             autocomplete="off"
              style="width:100%; box-sizing:border-box; background:var(--dark-3); border:1px solid rgba(201,168,76,0.35); border-radius:3px; padding:0.85rem 3rem 0.85rem 1.2rem; font-size:0.95rem; color:var(--cream); font-family:'Cormorant Garamond',serif; outline:none;">
-      <span style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); color:var(--gold); font-size:1rem; pointer-events:none;">&#x2315;</span>
+      <span style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); color:var(--gold); font-size:1.1rem; pointer-events:none;">⌕</span>
     </div>
-    <div id="tastingNoResult" style="display:none; text-align:center; padding:2rem; color:var(--muted); font-style:italic;">No matching notes found.</div>
+    <!-- Search results drop-in -->
+    <div id="tastingResults" style="display:none; margin-top:1rem; display:none; flex-direction:column; gap:0.75rem;"></div>
+    <div id="tastingNoResult" style="display:none; text-align:center; padding:1.5rem; color:var(--muted); font-style:italic; font-size:0.9rem;">No matching tasting notes found.</div>
 
     <!-- carousel wrapper -->
     <div style="position:relative; margin-top:2rem; overflow:hidden;" id="tastingCarousel">
@@ -1003,58 +1006,116 @@
     <script>
     (function(){
       let tIdx=0;
-      const track=document.getElementById('tastingTrack');
-      const carousel=document.getElementById('tastingCarousel');
-      const dotsEl=document.getElementById('tastingDots').querySelectorAll('span');
-      const slides=track.querySelectorAll('.tasting-slide');
-      const noResult=document.getElementById('tastingNoResult');
-      const total=5;
-      let visible=Array.from({length:total},(_,i)=>i);
+      const track    = document.getElementById('tastingTrack');
+      const dotsEl   = document.getElementById('tastingDots').querySelectorAll('span');
+      const slides   = Array.from(track.querySelectorAll('.tasting-slide'));
+      const noResult = document.getElementById('tastingNoResult');
+      const results  = document.getElementById('tastingResults');
+      const carousel = document.getElementById('tastingCarousel');
+      const dotsWrap = document.getElementById('tastingDots');
+      const total    = slides.length;
+
+      // Build index: for each slide extract producer, cuvee, tags, intro text
+      const index = slides.map((s, i) => {
+        const h3  = s.querySelector('h3');
+        const em  = s.querySelector('h3 + p em');
+        const sub = s.querySelector('h3 + p + p');
+        const img = s.querySelector('img');
+        const tags= Array.from(s.querySelectorAll('[style*="border-radius:2px"]')).map(t=>t.textContent.trim());
+        return {
+          i,
+          producer: h3 ? h3.textContent.trim() : '',
+          cuvee:    em  ? em.textContent.trim()  : '',
+          sub:      sub ? sub.textContent.trim()  : '',
+          imgSrc:   img ? img.src : '',
+          tags,
+          text:     s.textContent.toLowerCase()
+        };
+      });
 
       function tastingUpdate(){
-        const pos=visible.indexOf(tIdx);
-        const offset=pos>=0?pos:0;
-        track.style.transform='translateX(-'+offset*100+'%)';
-        dotsEl.forEach((d,i)=>d.style.background=visible[i]===tIdx?'var(--gold)':'rgba(201,168,76,0.3)');
+        track.style.transform = 'translateX(-' + tIdx * 100 + '%)';
+        dotsEl.forEach((d, i) => d.style.background = i === tIdx ? 'var(--gold)' : 'rgba(201,168,76,0.3)');
       }
-      window.tastingNext=function(){
-        if(!visible.length) return;
-        const cur=visible.indexOf(tIdx);
-        tIdx=visible[(cur+1)%visible.length];
+
+      window.tastingNext = function(){
+        tIdx = (tIdx + 1) % total;
         tastingUpdate();
-      }
-      window.tastingPrev=function(){
-        if(!visible.length) return;
-        const cur=visible.indexOf(tIdx);
-        tIdx=visible[(cur-1+visible.length)%visible.length];
+      };
+      window.tastingPrev = function(){
+        tIdx = (tIdx - 1 + total) % total;
         tastingUpdate();
-      }
-      window.tastingGo=function(i){tIdx=i;tastingUpdate();}
-      window.tastingFilter=function(q){
-        q=q.toLowerCase().trim();
-        visible=[];
-        slides.forEach((s,i)=>{
-          const match=!q||s.textContent.toLowerCase().includes(q);
-          s.style.display=match?'':'none';
-          if(match) visible.push(i);
-        });
-        noResult.style.display=visible.length?'none':'block';
-        carousel.style.display=visible.length?'':'none';
-        document.getElementById('tastingDots').style.display=visible.length?'flex':'none';
-        if(visible.length){ tIdx=visible[0]; tastingUpdate(); }
-        // rebuild track width
-        track.style.width=(visible.length*100)+'%';
-        slides.forEach(s=>s.style.minWidth=visible.length?(100/visible.length)+'%':'100%');
-        track.style.transform='translateX(0)';
-        if(visible.length)tastingUpdate();
-      }
-      // touch
-      let sx=0;
-      track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
-      track.addEventListener('touchend',e=>{
-        const dx=e.changedTouches[0].clientX-sx;
-        if(Math.abs(dx)>40){dx<0?tastingNext():tastingPrev();}
-      },{passive:true});
+      };
+      window.tastingGo = function(i){
+        tIdx = i;
+        tastingUpdate();
+        // scroll to carousel
+        document.getElementById('tastingCarousel').scrollIntoView({behavior:'smooth', block:'start'});
+      };
+
+      window.tastingFilter = function(q){
+        q = q.trim();
+        if(!q){
+          results.style.display  = 'none';
+          noResult.style.display = 'none';
+          carousel.style.display = '';
+          dotsWrap.style.display = 'flex';
+          return;
+        }
+        const ql = q.toLowerCase();
+        const matched = index.filter(it => it.text.includes(ql));
+
+        // Hide carousel while searching
+        carousel.style.display = 'none';
+        dotsWrap.style.display = 'none';
+
+        if(!matched.length){
+          results.style.display  = 'none';
+          noResult.style.display = 'block';
+          return;
+        }
+
+        noResult.style.display = 'none';
+        results.innerHTML = matched.map(it => `
+          <div onclick="tastingGoFromSearch(${it.i})"
+               style="display:flex;gap:1.2rem;align-items:center;background:var(--dark-3);border:1px solid rgba(201,168,76,0.22);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;"
+               onmouseover="this.style.borderColor='rgba(201,168,76,0.6)'"
+               onmouseout="this.style.borderColor='rgba(201,168,76,0.22)'">
+            <img src="${it.imgSrc}" alt="${it.producer}"
+                 style="width:5.5rem;height:5.5rem;object-fit:cover;object-position:center;flex-shrink:0;filter:brightness(0.88);">
+            <div style="padding:0.8rem 1rem 0.8rem 0; flex:1; min-width:0;">
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--cream);margin:0 0 0.2rem;">${it.producer}</p>
+              <p style="font-style:italic;color:var(--gold);font-size:0.88rem;margin:0 0 0.4rem;">${it.cuvee}</p>
+              <p style="font-size:0.78rem;color:var(--muted);margin:0 0 0.5rem;">${it.sub}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                ${it.tags.slice(0,4).map(t=>`<span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:0.15rem 0.5rem;border-radius:2px;">${t}</span>`).join('')}
+              </div>
+            </div>
+            <div style="padding-right:1rem;color:var(--gold);font-size:1.2rem;opacity:0.6;">›</div>
+          </div>
+        `).join('');
+        results.style.display = 'flex';
+      };
+
+      window.tastingGoFromSearch = function(i){
+        // Clear search, show carousel, go to slide
+        document.getElementById('tastingSearch').value = '';
+        results.style.display  = 'none';
+        noResult.style.display = 'none';
+        carousel.style.display = '';
+        dotsWrap.style.display = 'flex';
+        tIdx = i;
+        tastingUpdate();
+        document.getElementById('tasting-reviews').scrollIntoView({behavior:'smooth', block:'start'});
+      };
+
+      // Touch swipe on carousel
+      let sx = 0;
+      track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+      track.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - sx;
+        if(Math.abs(dx) > 40){ dx < 0 ? tastingNext() : tastingPrev(); }
+      }, {passive:true});
     })();
     </script>
 
