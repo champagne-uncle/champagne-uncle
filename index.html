@@ -1692,13 +1692,32 @@
     <div class="eyebrow" style="text-align:center; margin-bottom:0.6rem;">Weekly Report</div>
     <h2 class="sec-title" style="text-align:center; margin-bottom:0.4rem;">Field Notes &amp;<br><em>Dining Dispatches</em></h2>
     <div class="rule" style="margin: 0 auto 3.5rem;"></div>
+    <!-- Dining Search -->
+    <div style="margin-bottom:2.5rem;">
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.85rem;">
+        <span style="font-size:0.65rem; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);">Search Dining Notes</span>
+        <div style="flex:1; height:1px; background:rgba(201,168,76,0.2);"></div>
+        <span style="font-size:0.75rem; color:var(--muted); font-style:italic;">7 dispatches</span>
+      </div>
+      <div style="position:relative;">
+        <input id="diningSearch" type="text" placeholder="Search — French, Korean, Michelin, Onjium..."
+               oninput="diningFilter(this.value)"
+               autocomplete="off"
+               style="width:100%; box-sizing:border-box; background:var(--dark-3); border:1px solid rgba(201,168,76,0.35); border-radius:3px; padding:0.85rem 3rem 0.85rem 1.2rem; font-size:0.95rem; color:var(--cream); font-family:'Cormorant Garamond',serif; outline:none;">
+        <span style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); color:var(--gold); font-size:1.1rem; pointer-events:none;">⌕</span>
+      </div>
+      <div id="diningResults" style="display:none; margin-top:1rem; flex-direction:column; gap:0.75rem;"></div>
+      <div id="diningNoResult" style="display:none; text-align:center; padding:1.5rem; color:var(--muted); font-style:italic; font-size:0.9rem;">No matching dining notes found.</div>
+    </div>
+
+
 
     <!-- Report Carousel (show/hide) -->
     <div id="reportCarousel">
       <div id="reportTrack">
 
         <!-- SLIDE 1: Le Privé -->
-        <article style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
+        <article class="dining-slide" style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
           <!-- 4-photo grid -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px; background:#0f0d0a; padding:3px;">
             <div style="position:relative; overflow:hidden; aspect-ratio:3/4;">
@@ -1762,7 +1781,7 @@
         </article>
 
         <!-- SLIDE 2: Onjium -->
-        <article style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
+        <article class="dining-slide" style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
           <div style="position:relative;">
             <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/onjium.jpg"
                  alt="Onjium — Michelin Star Korean Fine Dining"
@@ -1796,7 +1815,7 @@
         </article>
 
         <!-- SLIDE 2: Sutimun -->
-        <article style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
+        <article class="dining-slide" style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
           <div style="position:relative; overflow:hidden;">
             <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/sutimun.jpg"
                  alt="Sutimun — Chef Yunhaeng Heo"
@@ -1830,7 +1849,7 @@
         </article>
 
         <!-- SLIDE 2: Hashira -->
-        <article style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
+        <article class="dining-slide" style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
           <div style="position:relative; overflow:hidden;">
             <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/hashira.jpg"
                  alt="Hashira — Chef Joohwan Yoon"
@@ -1863,7 +1882,7 @@
         </article>
 
         <!-- SLIDE 2: Sosuheon -->
-        <article style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
+        <article class="dining-slide" style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
           <div style="position:relative; overflow:hidden;">
             <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/sosuheon.jpg"
                  alt="Sosuheon — Chef Kyungjae Park"
@@ -1896,7 +1915,7 @@
         </article>
 
         <!-- SLIDE 2: Mingles -->
-        <article style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
+        <article class="dining-slide" style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
           <div style="position:relative; overflow:hidden;">
             <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/mingles.jpg"
                  alt="Mingles — A Night for Wine"
@@ -1929,7 +1948,7 @@
         </article>
 
         <!-- SLIDE 2: Restaurant SAN -->
-        <article style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
+        <article class="dining-slide" style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden;">
           <div style="position:relative; overflow:hidden;">
             <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/san_restaurant.jpg"
                  alt="Restaurant SAN — Chef Seunghyun Cho"
@@ -2013,6 +2032,7 @@
 
     prevBtn.addEventListener('click', () => goTo(current - 1));
     nextBtn.addEventListener('click', () => goTo(current + 1));
+    window.reportGo = goTo;
 
     // 터치 스와이프
     let startX = 0;
@@ -2080,5 +2100,95 @@
     });
   });
 </script>
+
+  <script>
+  (function(){
+    // Wait for DOM
+    function initDining(){
+      const slides   = Array.from(document.querySelectorAll('.dining-slide'));
+      const carousel = document.getElementById('reportCarousel');
+      const dotsWrap = document.getElementById('reportDots');
+      const results  = document.getElementById('diningResults');
+      const noResult = document.getElementById('diningNoResult');
+
+      if(!slides.length) return;
+
+      // Build index
+      const index = slides.map((s, i) => {
+        const h3  = s.querySelector('h3');
+        const sub = h3 ? h3.nextElementSibling : null;
+        // Get first image src
+        const img = s.querySelector('img');
+        const tags = Array.from(s.querySelectorAll('[style*="border-radius:2px"]')).map(t=>t.textContent.trim());
+        return {
+          i,
+          name: h3  ? h3.textContent.trim()  : '',
+          sub:  sub ? sub.textContent.trim()  : '',
+          imgSrc: img ? img.src : '',
+          tags,
+          text: s.textContent.toLowerCase()
+        };
+      });
+
+      window.diningFilter = function(q){
+        q = q.trim();
+        if(!q){
+          results.style.display  = 'none';
+          noResult.style.display = 'none';
+          if(carousel) carousel.style.display = '';
+          if(dotsWrap) dotsWrap.style.display = 'flex';
+          return;
+        }
+        const ql = q.toLowerCase();
+        const matched = index.filter(it => it.text.includes(ql));
+
+        if(carousel) carousel.style.display = 'none';
+        if(dotsWrap) dotsWrap.style.display = 'none';
+
+        if(!matched.length){
+          results.style.display  = 'none';
+          noResult.style.display = 'block';
+          return;
+        }
+
+        noResult.style.display = 'none';
+        results.innerHTML = matched.map(it => `
+          <div onclick="diningGoFromSearch(${it.i})"
+               style="display:flex;gap:1.2rem;align-items:center;background:var(--dark-3);border:1px solid rgba(201,168,76,0.22);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;"
+               onmouseover="this.style.borderColor='rgba(201,168,76,0.6)'"
+               onmouseout="this.style.borderColor='rgba(201,168,76,0.22)'">
+            <img src="${it.imgSrc}" alt="${it.name}"
+                 style="width:5.5rem;height:5.5rem;object-fit:cover;object-position:center;flex-shrink:0;filter:brightness(0.88);">
+            <div style="padding:0.8rem 1rem 0.8rem 0; flex:1; min-width:0;">
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--cream);margin:0 0 0.2rem;">${it.name}</p>
+              <p style="font-style:italic;color:var(--gold);font-size:0.85rem;margin:0 0 0.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${it.sub}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                ${it.tags.slice(0,4).map(t=>`<span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:0.15rem 0.5rem;border-radius:2px;">${t}</span>`).join('')}
+              </div>
+            </div>
+            <div style="padding-right:1rem;color:var(--gold);font-size:1.2rem;opacity:0.6;">›</div>
+          </div>
+        `).join('');
+        results.style.display = 'flex';
+      };
+
+      window.diningGoFromSearch = function(i){
+        document.getElementById('diningSearch').value = '';
+        results.style.display  = 'none';
+        noResult.style.display = 'none';
+        if(carousel){ carousel.style.display = ''; }
+        if(dotsWrap){ dotsWrap.style.display = 'flex'; }
+        // Go to slide i in the report carousel
+        if(window.reportGo) window.reportGo(i);
+        document.getElementById('reports').scrollIntoView({behavior:'smooth', block:'start'});
+      };
+    }
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', initDining);
+    } else {
+      initDining();
+    }
+  })();
+  </script>
 </body>
 </html>
