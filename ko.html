@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>샴페인 아저씨 — Champagne Uncle | 테이스팅 노트 · 와인 다이닝 · Grower Champagne</title>
+<meta name="description" content="샴페인 아저씨의 테이스팅 노트, 와인 다이닝 기록, Grower Champagne 큐레이션.">
+<meta name="keywords" content="샴페인,샴페인 아저씨,Champagne Uncle,그로워 샴페인,테이스팅 노트,Krug,Dom Pérignon,Salon">
+<meta name="naver-site-verification" content="90de90c21291a318171f95d541b355f0">
+<meta property="og:title" content="샴페인 아저씨 — Champagne Uncle">
+<meta property="og:description" content="샴페인 테이스팅 노트와 와인 다이닝 기록">
+<meta property="og:url" content="https://www.champagne-uncle.com/ko.html">
+<link rel="icon" href="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/favicon.ico">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d08a;
+      --gold-dim: rgba(201,168,76,0.15);
+      --cream: #faf7f0;
+      --dark: #0f0d0a;
+      --dark-2: #181410;
+      --dark-3: #201c16;
+      --muted: rgba(250,247,240,0.55);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(15,13,10,0.96) 0%, transparent 100%);
+      backdrop-filter: blur(6px);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 70%, #2e200400 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 50% 50%, #3d2800 0%, #0f0d0a 65%);
+      overflow: hidden;
+    }
+
+    /* animated grain */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .bubbles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.35) 0%, transparent 70%);
+      animation: rise linear infinite;
+    }
+    @keyframes rise {
+      0%   { transform: translateY(110vh); opacity: 0; }
+      8%   { opacity: 1; }
+      92%  { opacity: 0.5; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 0.45rem 1.4rem;
+      border-radius: 2px;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 12vw, 8.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.15em;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      margin-top: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      background: rgba(201,168,76,0.04);
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gold);
+      opacity: 0.4;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    .scroll-cue svg { width: 18px; height: 18px; }
+    @keyframes bob {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 7rem 2rem; }
+    .inner { max-width: 1060px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: 0.66rem;
+      letter-spacing: 0.48em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .sec-title em { font-style: italic; color: var(--gold); }
+    .rule {
+      width: 52px; height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--dark-2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-card {
+      background: var(--dark-3);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+      position: sticky;
+      top: 6rem;
+    }
+    .about-card-img {
+      height: 420px;
+      background: linear-gradient(135deg, #2a1f08, #0f0d0a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      overflow: hidden;
+    }
+    .about-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+    .about-card-body { padding: 2rem; }
+    .about-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .about-card-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .about-card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .about-card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      border: 1px solid rgba(250,247,240,0.12);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    .about-content p {
+      font-size: 1.02rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      font-weight: 300;
+    }
+    .about-content p strong { color: var(--gold-light); font-weight: 500; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── VENTURES ─── */
+    #ventures { background: var(--dark); }
+    .ventures-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.08);
+    }
+    .venture-block {
+      background: var(--dark);
+      padding: 3rem 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .venture-block::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .venture-block:hover { background: var(--dark-3); }
+    .venture-block:hover::after { transform: scaleX(1); }
+
+    .venture-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .venture-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--cream);
+    }
+    .venture-sub {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .venture-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* ─── CHAMPAGNES ─── */
+    #champagnes { background: var(--dark-2); }
+    .variety-section { margin-bottom: 4rem; }
+    .variety-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .variety-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--gold);
+    }
+    .variety-badge {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(250,247,240,0.1);
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+    }
+    .champ-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(201,168,76,0.07);
+    }
+    .champ-card {
+      background: var(--dark-2);
+      padding: 2.5rem;
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .champ-card:hover { background: var(--dark-3); }
+    .champ-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      color: rgba(201,168,76,0.3);
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+    }
+    .champ-house {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .champ-cuvee {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .champ-notes {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .champ-type {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(201,168,76,0.2);
+      color: rgba(201,168,76,0.6);
+      border-radius: 100px;
+    }
+    @media (max-width: 768px) {
+      .champ-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PHILOSOPHY ─── */
+    #philosophy {
+      background: var(--dark);
+      text-align: center;
+    }
+    .phil-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4.5vw, 3rem);
+      font-style: italic;
+      line-height: 1.45;
+      max-width: 820px;
+      margin: 0 auto 0.8rem;
+    }
+    .phil-quote em { color: var(--gold); font-style: normal; }
+    .phil-attr {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 5rem;
+    }
+    .phil-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      text-align: left;
+    }
+    .phil-item {}
+    .phil-n {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(201,168,76,0.1);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+    .phil-t {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .phil-d {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ─── CONNECT ─── */
+    #connect {
+      background: var(--dark-2);
+      text-align: center;
+    }
+    .connect-handle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-style: italic;
+      color: var(--gold);
+      margin: 1rem 0 0.5rem;
+      line-height: 1;
+    }
+    .connect-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.08em;
+    }
+    .connect-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+      border: 1px solid var(--gold);
+    }
+    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-outline {
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold-dim); border-color: var(--gold); }
+
+    /* ─── WINE OF THE MONTH ─── */
+    #wine-of-month {
+      background: var(--dark-2);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .wom-card {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 4rem;
+      align-items: start;
+      background: linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 60%);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 2px;
+      padding: 3.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      min-height: 680px;
+    }
+    .wom-img-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+      padding: 2rem 1rem;
+      height: 520px;
+      flex-shrink: 0;
+    }
+    .wom-bottle {
+      height: 420px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 32px rgba(201,168,76,0.25));
+      transition: transform 0.4s ease;
+    }
+    .wom-bottle:hover { transform: scale(1.04) translateY(-4px); }
+    .wom-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.35);
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+    .wom-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .wom-name em { color: var(--gold); font-style: italic; }
+    .wom-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.2rem;
+    }
+    .wom-score {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+    }
+    .score-badge {
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+    }
+    .score-source {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .wom-divider {
+      width: 3rem;
+      height: 1px;
+      background: rgba(201,168,76,0.4);
+      margin-bottom: 1.2rem;
+    }
+    .wom-notes {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: rgba(250,247,240,0.78);
+      margin-bottom: 1.4rem;
+    }
+    .wom-quote {
+      border-left: 2px solid var(--gold);
+      padding: 0.6rem 1rem;
+      margin-bottom: 1.6rem;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--muted);
+      background: rgba(201,168,76,0.05);
+    }
+    .wom-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2rem;
+      margin-top: 0.4rem;
+    }
+    .wom-meta-grid > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .wom-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .wom-val {
+      font-size: 0.95rem;
+      color: var(--cream);
+    }
+    .wom-quote-block {
+      border-left: 2px solid var(--gold);
+      padding: 0.8rem 1.2rem;
+      background: rgba(201,168,76,0.05);
+    }
+    .wom-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--cream);
+      margin: 0 0 0.5rem;
+    }
+    .wom-quote-author {
+      font-size: 0.82rem;
+      color: var(--gold);
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+    .wom-quote cite {
+      display: block;
+      margin-top: 0.4rem;
+      font-style: normal;
+      font-size: 0.78rem;
+      color: var(--gold);
+    }
+    .wom-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .wom-spec {
+      font-size: 0.8rem;
+      color: rgba(250,247,240,0.65);
+    }
+    .wom-spec span {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.15rem;
+    }
+    .wom-buy {
+      font-size: 0.9rem;
+      padding: 0.9rem 2rem;
+      letter-spacing: 0.08em;
+    }
+    @media (max-width: 768px) {
+      .wom-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        min-height: unset;
+      }
+      .wom-img-wrap {
+        height: 320px;
+      }
+      .wom-bottle {
+        height: 260px;
+      }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.08);
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .footer-copy {
+      font-size: 0.7rem;
+      color: rgba(250,247,240,0.2);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-card { position: static; }
+      .ventures-grid,
+      .phil-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 600px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .champ-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Champagne Uncle</div>
+  <div class="nav-links">
+    <a href="#about">소개</a>
+    <a href="#cellar">셀러</a>
+    <a href="#tasting">테이스팅</a>
+    <a href="#dining">다이닝</a>
+    <a href="#connect">연락처</a>
+  </div>
+  <a href="/" style="font-size:0.68rem;letter-spacing:0.15em;border:1px solid rgba(201,168,76,0.3);padding:0.3rem 0.8rem;border-radius:2px;color:var(--gold);">EN</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">샴페인 아저씨 · Champagne Uncle</p>
+    <h1>샴페인을 <em>마시는 것</em>이 아니라<br>이해하는 사람</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">Grower Champagne · 와인 다이닝 · 테이스팅 아카이브</p>
+    <div class="hero-cta">
+      <a href="#tasting">테이스팅 노트 →</a>
+      <a href="#dining">다이닝 기록 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">소개</p>
+        <h2 class="section-title">와인을 팔고,<br>마시고, <em>기록합니다</em></h2>
+        <div class="divider"></div>
+        <p>샴페인을 좋아하는 것과 샴페인을 아는 것은 다르다. 그 간격을 좁히는 것이 이 사이트의 존재 이유다.</p>
+        <p>크리스탈와인컬렉션에서 일하며 레끌레 드 크리스탈 양재점(<em>Les Clefs de Cristal Yangjae</em>)을 운영하고 있다. 샴페인과 부르고뉴를 전문으로 하는 와인 바이자 테이스팅 공간이다.</p>
+        <p>Bau Vineyard에서는 한국 토양에서 자란 <em>Chardonnay</em>를 직접 재배하며, 와인이 포도밭에서 시작된다는 것을 매일 확인하고 있다.</p>
+        <p>이 사이트는 직접 시음한 와인의 기록, 방문한 레스토랑의 이야기, 그리고 샴페인에 관한 생각들을 담는다. 화려한 마케팅 언어보다 솔직한 관찰을 우선한다.</p>
+        <div class="stat-row">
+          <div class="stat-item"><span class="stat-num">34</span><span class="stat-label">테이스팅 노트</span></div>
+          <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">다이닝 기록</span></div>
+          <div class="stat-item"><span class="stat-num">20+</span><span class="stat-label">탐구한 생산자</span></div>
+        </div>
+      </div>
+      <div class="about-photo">
+        <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/profile.jpg" alt="Champagne Uncle">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CELLAR -->
+<section id="cellar" style="background:var(--dark-2); padding:7rem 0;">
+  <div class="container">
+    <p class="section-label">셀러 큐레이션</p>
+    <h2 class="section-title">무엇을 <em>마시는가</em></h2>
+    <div class="divider"></div>
+    <div class="cellar-grid">
+      <div class="cellar-card">
+        <span class="cellar-tag">Grower Champagne</span>
+        <h3>Grower Champagne</h3>
+        <p>Jacques Selosse, Ulysse Collin, Jérôme Prévost, Cédric Bouchard — 포도밭에서 병까지 한 사람의 손에서 이루어지는 샴페인들. 블렌딩이 아니라 장소를 말하는 와인.</p>
+      </div>
+      <div class="cellar-card">
+        <span class="cellar-tag">Grande Maison</span>
+        <h3>Grande Maison</h3>
+        <p>Krug, Dom Pérignon, Salon, Bollinger, Louis Roederer — 수십 년에 걸쳐 쌓인 리저브 와인과 블렌딩 기술이 만드는 일관성. 빈티지와 NV 모두 다른 이유로 위대하다.</p>
+      </div>
+      <div class="cellar-card">
+        <span class="cellar-tag">Blanc de Blancs</span>
+        <h3>Blanc de Blancs</h3>
+        <p>Chardonnay만으로 만드는 샴페인. Côte des Blancs의 백악질 토양이 만드는 미네랄과 산도 — Le Mesnil, Avize, Cramant의 각기 다른 언어들.</p>
+      </div>
+      <div class="cellar-card">
+        <span class="cellar-tag">Burgundy</span>
+        <h3>Burgundy</h3>
+        <p>Côte de Nuits의 Pinot Noir, Côte de Beaune의 Chardonnay. 샴페인과 다른 방식으로 테루아를 말하는 와인들 — 기포 없이도 충분히 복잡하다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LES CLEFS -->
+<section id="clefs" style="padding:7rem 0;">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">Les Clefs de Cristal Yangjae</p>
+        <h2 class="section-title"><em>레끌레 드 크리스탈</em><br>양재점</h2>
+        <div class="divider"></div>
+        <p>서울 양재에 위치한 샴페인 &amp; 부르고뉴 전문 와인 바. Crystal Wine Collection의 플래그십 테이스팅 공간이다.</p>
+        <p>Grower Champagne부터 Prestige Cuvée까지 — 잔으로 마실 수 있는 와인들을 엄선했다. 매달 바뀌는 테이스팅 프로그램과 함께 생산자의 이야기를 직접 경험할 수 있다.</p>
+        <p>와인은 마시는 것이 아니라 경험하는 것이라고 믿는다. 레끌레는 그 경험을 위한 공간이다.</p>
+      </div>
+      <div style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.12); display:flex; align-items:center; justify-content:center; min-height:300px;">
+        <span style="font-size:0.7rem; letter-spacing:0.2em; color:var(--muted);">Les Clefs de Cristal · Yangjae</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAU VINEYARD -->
+<section id="bau" style="background:var(--dark-2); padding:7rem 0;">
+  <div class="container">
+    <div class="about-grid">
+      <div style="background:var(--dark-3); border:1px solid rgba(201,168,76,0.12); display:flex; align-items:center; justify-content:center; min-height:300px;">
+        <span style="font-size:0.7rem; letter-spacing:0.2em; color:var(--muted);">Bau Vineyard</span>
+      </div>
+      <div>
+        <p class="section-label">Bau Vineyard</p>
+        <h2 class="section-title">한국 땅에서 자란<br><em>Chardonnay</em></h2>
+        <div class="divider"></div>
+        <p>Bau Vineyard는 한국 토양에서 Chardonnay를 직접 재배하는 실험적인 프로젝트다.</p>
+        <p>샴페인의 위대함이 포도밭에서 시작된다는 것을 알기에 — 직접 흙을 만지고, 포도를 기르고, 수확한다. 와인을 파는 사람이 와인을 만드는 사람의 어려움을 알아야 한다.</p>
+        <p>아직 작은 실험이지만, 언젠가 이 땅에서 나온 포도로 만든 와인이 누군가의 기억 속에 남기를 바란다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy" style="padding:7rem 0;">
+  <div class="container">
+    <p class="section-label">철학</p>
+    <h2 class="section-title">좋은 샴페인은<br><em>설명하지 않아도</em> 느껴진다</h2>
+    <blockquote style="font-family:'Playfair Display',serif; font-size:clamp(1.2rem,2.2vw,1.8rem); font-style:italic; line-height:1.5; color:rgba(250,247,240,0.7); border-left:2px solid var(--gold); padding-left:2rem; margin:3rem 0;">"샴페인은 기포로 기억되지 않는다. 땅의 성격과 와인의 질감으로 기억된다."</blockquote>
+    <p style="color:rgba(250,247,240,0.65); max-width:600px; line-height:1.9;">모든 테이스팅 노트는 마케팅이 아니다. 잔 앞에 앉아서 시간을 주고, 변화를 따라가고, 솔직하게 기록한 것이다. 과장도, 폄하도 없이 — 와인이 그날 무엇을 말했는지만 쓴다.</p>
+  </div>
+</section>
+
+<!-- WINE OF THE MONTH -->
+<section id="wom" style="background:var(--dark-2); padding:7rem 0; border-top:1px solid rgba(201,168,76,0.1);">
+  <div class="container">
+    <p class="section-label">이달의 와인</p>
+    <h2 class="section-title">Wine <em>of the Month</em></h2>
+    <div class="divider"></div>
+    <div style="position:relative; overflow:hidden; margin-top:2rem;" id="womCarousel">
+      <div id="womTrack" style="display:flex; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);">
+        <div class="wom-slide" style="min-width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+          <div class="wom-img" style="aspect-ratio:2/3; overflow:hidden; border:1px solid rgba(201,168,76,0.12);"><img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/cristal_rose.png" alt="Louis Roederer Cristal Rosé 2008" style="width:100%;height:100%;object-fit:contain;background:var(--dark-3);" loading="lazy"></div>
+          <div style="padding:2rem 0;">
+            <span style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">2026년 10월</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin:0.5rem 0;">Louis Roederer</h3>
+            <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);margin-bottom:1.5rem;"><em>Cristal Rosé 2008</em></p>
+            <p style="font-size:0.95rem;color:rgba(250,247,240,0.72);line-height:1.85;">Cristal의 로제 버전. 2008 빈티지의 구조감과 Pinot Noir의 과실미가 만나는 지점. 강하고 우아하다는 말이 모순처럼 들리지만, 이 와인 앞에서는 그렇지 않다.</p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;">Louis Roederer · Reims · Prestige Cuvée Rosé</p>
+          </div>
+        </div>
+        <div class="wom-slide" style="min-width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+          <div class="wom-img" style="aspect-ratio:2/3; overflow:hidden; border:1px solid rgba(201,168,76,0.12);"><img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/chemins_avize.png" alt="Les Chemins d'Avize" style="width:100%;height:100%;object-fit:contain;background:var(--dark-3);" loading="lazy"></div>
+          <div style="padding:2rem 0;">
+            <span style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">2026년 9월</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin:0.5rem 0;">Larmandier-Bernier</h3>
+            <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);margin-bottom:1.5rem;"><em>Les Chemins d'Avize</em></p>
+            <p style="font-size:0.95rem;color:rgba(250,247,240,0.72);line-height:1.85;">Avize를 지나는 길. 백악질 토양이 가장 직접적으로 말을 거는 Blanc de Blancs — 미네랄의 순수함이 바이오다이내믹 농법과 만난다.</p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;">Larmandier-Bernier · Vertus · Biodynamic</p>
+          </div>
+        </div>
+        <div class="wom-slide" style="min-width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+          <div class="wom-img" style="aspect-ratio:2/3; overflow:hidden; border:1px solid rgba(201,168,76,0.12);"><img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/mousse_hommage.png" alt="Mousse Fils Hommage" style="width:100%;height:100%;object-fit:contain;background:var(--dark-3);" loading="lazy"></div>
+          <div style="padding:2rem 0;">
+            <span style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">2026년 8월</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin:0.5rem 0;">Mousse Fils</h3>
+            <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);margin-bottom:1.5rem;"><em>L'Or d'Eugène Hommage</em></p>
+            <p style="font-size:0.95rem;color:rgba(250,247,240,0.72);line-height:1.85;">Meunier의 재발견. 조연으로만 알려진 품종이 주인공이 될 때 무슨 일이 일어나는지 보여주는 와인. 결론: 충분히 가능하다.</p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;">Mousse Fils · Cuisles · Meunier Specialist</p>
+          </div>
+        </div>
+        <div class="wom-slide" style="min-width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+          <div class="wom-img" style="aspect-ratio:2/3; overflow:hidden; border:1px solid rgba(201,168,76,0.12);"><img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/unisson.png" alt="Franck Bonville Unisson" style="width:100%;height:100%;object-fit:contain;background:var(--dark-3);" loading="lazy"></div>
+          <div style="padding:2rem 0;">
+            <span style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">2026년 7월</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin:0.5rem 0;">Henri Giraud</h3>
+            <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);margin-bottom:1.5rem;"><em>MV20</em></p>
+            <p style="font-size:0.95rem;color:rgba(250,247,240,0.72);line-height:1.85;">Aÿ Grand Cru의 아이덴티티. MV20은 Giraud의 멀티 빈티지 블렌딩 — 장소를 표현하는 방식이 독특하다.</p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;">Henri Giraud · Aÿ · Grand Cru</p>
+          </div>
+        </div>
+        <div class="wom-slide" style="min-width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+          <div class="wom-img" style="aspect-ratio:2/3; overflow:hidden; border:1px solid rgba(201,168,76,0.12);"><img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/unisson.png" alt="Franck Bonville Unisson" style="width:100%;height:100%;object-fit:contain;background:var(--dark-3);" loading="lazy"></div>
+          <div style="padding:2rem 0;">
+            <span style="font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">2026년 6월</span>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin:0.5rem 0;">Franck Bonville</h3>
+            <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);margin-bottom:1.5rem;"><em>Unisson</em></p>
+            <p style="font-size:0.95rem;color:rgba(250,247,240,0.72);line-height:1.85;">Avize와 Oger — 두 Grand Cru가 하나의 잔 안에서 조화를 이루는 방식. 이름처럼 유니즌.</p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;">Franck Bonville · Avize · Blanc de Blancs</p>
+          </div>
+        </div>
+      </div>
+      <button onclick="womGoKo(-1)" style="position:absolute;top:50%;transform:translateY(-50%);left:0.5rem;background:rgba(15,13,10,0.7);border:1px solid rgba(201,168,76,0.2);color:var(--gold);width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;">&#8249;</button>
+      <button onclick="womGoKo(1)" style="position:absolute;top:50%;transform:translateY(-50%);right:0.5rem;background:rgba(15,13,10,0.7);border:1px solid rgba(201,168,76,0.2);color:var(--gold);width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;">&#8250;</button>
+    </div>
+    <div id="womDotsKo" style="display:flex;gap:0.5rem;margin-top:1.5rem;">
+      <span onclick="womSetKo(0)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:var(--gold);cursor:pointer;display:inline-block;"></span>
+      <span onclick="womSetKo(1)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;"></span>
+      <span onclick="womSetKo(2)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;"></span>
+      <span onclick="womSetKo(3)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;"></span>
+      <span onclick="womSetKo(4)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;"></span>
+    </div>
+  </div>
+</section>
+
+<!-- TASTING REVIEWS -->
+<section id="tasting" style="background:var(--dark-2); padding:7rem 0;">
+  <div class="container">
+    <p class="section-label">테이스팅 노트 아카이브</p>
+    <h2 class="section-title">Tasting <em>Reviews</em></h2>
+    <div class="divider"></div>
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;">테이스팅 노트 검색 &nbsp;|&nbsp; <span style="color:var(--muted);">34개 노트</span></p>
+      <input type="text" id="tastingInputKo" placeholder="생산자, 큐베, 빈티지 검색..." oninput="tastingFilterKo()" style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);color:var(--cream);padding:0.7rem 1rem;font-size:0.85rem;width:100%;max-width:400px;outline:none;border-radius:2px;">
+      <div id="tastingResultsKo" style="display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:1rem;"></div>
+    </div>
+    <div style="position:relative; overflow:hidden;" id="tastingCarouselKo">
+      <div id="tastingTrackKo" style="display:flex; transition:transform 0.45s cubic-bezier(.4,0,.2,1); will-change:transform;">
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/elise_bougy_mont_chainqueux.jpg" alt="Élise Bougy Le Mont-Chainqueux — Premier Cru" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Élise Bougy</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Le Mont-Chainqueux — Premier Cru</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Les Mesneux PC · Pinot Noir + Meunier · 1965년 식재 · 유기농</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">포도밭을 '깨끗하게' 보여주기 위해, 셀러에서 최대한 덜 만지는 샴페인.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">2016년 가족 3ha 포도밭 이어받아 유기농 전환. 연간 약 1만 병의 마이크로 도멘. Le Mont-Chainqueux는 조부모가 1965년 심은 파셀 — Pinot Noir와 Meunier 함께 식재, 수령 약 60년. 남동향, 아래는 silt+chalk, 위는 clay+sand. 라즈베리, 붉은 사과, 체리에서 시작해 아몬드, 브리오슈, 시나몬으로 이어지고 마지막은 미네랄, 소금기, chalk 피니시. 포도밭이 마지막 발언권을 갖는다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/gaspard_brochet_duo.jpg" alt="Gaspard Brochet 333.f & Le Lion Tome VII — 나란히" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Gaspard Brochet</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>333.f & Le Lion Tome VII — 나란히</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Écueil · 1995년생 · 3.2ha · 바이오다이내믹 · 100% Pinot Noir</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">한쪽은 감칠맛, 다른 한쪽은 리덕션. 같은 Pinot Noir, 전혀 다른 두 얼굴.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">333.f: 2021년 수확량 감소로 기존 공식 파기, 100% Pinot Noir + 2022+2020 리저브, dosage 1g/L. 짭짤하고 고소한 감칠맛이 인상적이다. Le Lion Tome VII: Villers-aux-Nœuds PC Le Mont Benoît 단일 파셀, 2023 수확, 2026년 1월 디고르주망으로 매우 어린 병. 첫 향의 강한 리덕션은 와인 스타일이 아니라 bottle state — 가스파드는 실제로 산소를 적극 허용하는 생산자다. 시간을 주면 과실이 열린다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/taittinger_comtes_2008.jpg" alt="Taittinger Comtes de Champagne Blanc de Blancs 2008" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Taittinger</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Comtes de Champagne Blanc de Blancs 2008</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">100% Chardonnay · Avize + Cramant + Le Mesnil GC · Circling 100 · WK 98 · WS 95</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">새벽 2시. 무제한. 점수가 맞다. 세팅이 더 좋았다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Comtes de Champagne는 1952년 첫 출시 Taittinger 프레스티지 큐베. Côte des Blancs 세 Grand Cru의 Chardonnay만으로. 2008 빈티지: 높은 당도와 높은 산도의 이례적 공존 — Circling 100, WK 98, WS 95. 잔에서 시트러스 오일, 분필, 복숭아, 사과, 로스팅된 아몬드, 꿀에 절인 생강. 풍부한 질감, 뛰어난 산미, 강한 미네랄, 토스티한 긴 피니시.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/dp_rose_gaga_2008.jpg" alt="Dom Pérignon Rosé Vintage 2008 — Lady Gaga Limited Edition" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Dom Pérignon</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Rosé Vintage 2008 — Lady Gaga Limited Edition</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">레드 와인 10% (최근 DP Rosé 최저) · 2019년 디고르주망 · 2021년 출시</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Dom Pérignon Rosé의 가장 이례적인 콜라보레이션.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">2008 빈티지와 Lady Gaga의 만남. 레드 와인 비율 10%는 최근 DP Rosé 릴리즈 중 최저. 15년 이상 lees 숙성, 2019년 디고르주망, 2021년 출시. 낮은 레드 와인 비율에도 rosé의 정체성은 명확 — 섬세한 과실, 복잡한 구조, 오랜 숙성이 만드는 깊이.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/bollinger_lga_2014.jpg" alt="Bollinger La Grande Année 2014 — Brut" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Bollinger</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>La Grande Année 2014 — Brut</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">PN 61% + CH 39% · 19개 포도밭 · 8년 이상 lees 숙성 · dosage 8g/l · 2022년 디고르주망</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">50년 만에 가장 추운 7-8월. 그 냉기가 만든 정밀하고 전기적인 산도.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Bollinger LGA는 탁월한 빈티지에만 출시. 2014년은 냉하고 느린 시즌이었으나 산도의 정밀함이 이상적 조건을 만들었다. PN 61% + CH 39%, 19개 포도밭, 8년 이상 lees 숙성, 2022년 디고르주망, dosage 8g/l. 강렬하고 전기적이며 오래 기억되는 피니시.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/prevost_gc.jpg" alt="Jérôme Prévost La Closerie Grand Cru Extra Brut" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Jérôme Prévost</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>La Closerie Grand Cru Extra Brut</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Le Mesnil-sur-Oger + Puisieulx · 2019년 첫 출시 · 매우 희소</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Jérôme Prévost의 유일한 Grand Cru 큐베.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Prévost는 Gueux의 Meunier 전문 생산자로 알려져 있다. La Closerie GC는 2019년 첫 출시 리미티드 에디션 — Chardonnay와 Pinot Noir의 Grand Cru 포도를 사용하며 외부 포도를 구매한다. 희소하고, 접근하기 어렵고, 그래서 더 인상적이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/krug_2006.jpg" alt="Krug Vintage Brut 2006" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Krug</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Vintage Brut 2006</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">PN 45% / CH 35% / Meunier 20% · '변덕스럽고 까다로운 해' · 장기 숙성 추천</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Krug가 '변덕스럽고 까다롭다'고 표현한 2006 빈티지.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Krug는 매년 빈티지 와인을 만들지 않는다. 2006년은 만들었다 — 이유가 있다. PN 45% / CH 35% / Meunier 20%. 비교적 더운 해였으나 선별 수확이 복잡성을 만든다. Krug 측은 장기 숙성을 권장한다. 지금도 충분히 흥미롭지만, 더 기다릴 이유가 있는 빈티지다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/guillaume_selosse_largillier.jpg" alt="Guillaume Selosse S. Largillier Extra Brut" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Guillaume Selosse</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>S. Largillier Extra Brut</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">2년 오크 + 1년 탱크 perpetual reserve · dosage 1.5g/l · 마지막 빈티지 2021</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Jacques Selosse의 아들 Guillaume이 만든, 이미 사라진 큐베.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">2년 오크 + 1년 탱크의 perpetual reserve, dosage 1.5g/l. 2021 빈티지가 마지막이고 프로젝트는 종료됐다. Selosse 가문의 DNA가 느껴지면서도 Guillaume만의 접근이 있는 와인 — 부드럽고 정밀하다. 마지막이라는 사실이 이 와인에 또 다른 의미를 부여한다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/bouchard_vv_2020.jpg" alt="Cédric Bouchard VV Côte de Val Vilaine 2020" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Cédric Bouchard</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>VV Côte de Val Vilaine 2020</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">4기압 (일반 6기압 대비) · 무오크 · ~300–500 케이스/년</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">기포가 적다. 그래서 다른 방식으로 말한다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Aube의 극소량 parcellaire 생산자. VV Côte de Val Vilaine은 약 4기압, 오크 미사용, 연간 약 300~500 케이스. 기포가 적으면 질감이 다르다 — 와인이 앞에 나온다. Bouchard가 원하는 것이 바로 그것이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/vcp_cave_privee_1989.jpg" alt="Veuve Clicquot Ponsardin Cave Privée 1989 Brut Rosé" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Veuve Clicquot Ponsardin</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Cave Privée 1989 Brut Rosé</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">1989 빈티지 · 30년 이상 셀러 숙성 · Cave Privée 한정</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">30년 이상 Clicquot의 셀러에서 잠자던 1989 빈티지.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Cave Privée는 VCP가 보관해온 올드 빈티지를 장기 숙성 후 한정 출시하는 라인이다. 1989는 Champagne의 위대한 해 중 하나. 30년 이상의 추가 숙성이 만드는 복잡성 — 신선함보다 무게와 역사가 느껴지는 와인이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/fallon_avysia.jpg" alt="Brigitte Fallon Avysia" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Brigitte Fallon</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Avysia</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">소규모 도멘 · 독립적인 스타일</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">잘 알려지지 않은 곳에서 오는 조용한 발견.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Brigitte Fallon은 비교적 알려지지 않은 소규모 생산자다. Avysia는 독립적이고 개성 있는 스타일. 대형 마종의 화려함보다 조용하고 정밀한 표현 — 알고 마시면 더 흥미로운 와인이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/salon_2004.jpg" alt="Salon Cuvée 'S' Le Mesnil 2004" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Salon</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Cuvée 'S' Le Mesnil 2004</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">100% Chardonnay · Le Mesnil-sur-Oger GC · 탁월한 빈티지에만 생산</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Salon — 샴페인에서 가장 희소하고 가장 기다리게 만드는 이름.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Salon은 Blanc de Blancs 단일 큐베만 만드는 유일한 Grande Maison이다. Le Mesnil-sur-Oger 단일 포도밭, 탁월한 빈티지에만 생산. 2004년은 이 기준을 통과했다. Le Mesnil의 백악질 미네랄의 집약성 — 지금 마셔도 충분하지만 10년 후가 더 인상적일 것이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/lurquin_traversees.jpg" alt="Aurélien Lurquin Les Traversées" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Aurélien Lurquin</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Les Traversées</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">신진 생산자 · 테루아 중심</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">주목받기 시작한 신진 생산자의 교차점.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Aurélien Lurquin은 빠르게 주목받고 있는 생산자다. Les Traversées — '가로질러 가는 것들' — 은 여러 요소가 교차하는 지점을 표현한다. 복잡하고 사려 깊은 와인.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/ulysse_collin_maillons.jpg" alt="Ulysse Collin Les Maillons" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Ulysse Collin</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Les Maillons</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Congy · Blanc de Blancs · Côte de Sézanne</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Champagne에서 가장 빠르게 컬트 지위에 오른 이름 중 하나.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Olivier Collin의 Ulysse Collin, Côte de Sézanne의 Congy. Les Maillons — '고리들' — 은 여러 파셀을 연결하는 Chardonnay 중심 큐베. 산도와 미네랄이 핵심 — Côte des Blancs와는 다른 방식으로 이야기하는 Chardonnay.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/ulysse_collin_enfers.jpg" alt="Ulysse Collin Les Enfers" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Ulysse Collin</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Les Enfers</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Congy · Blanc de Blancs · '지옥'이라는 이름의 파셀</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">이름은 지옥, 잔에서는 그 반대다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Les Enfers는 Ulysse Collin 단일 파셀 큐베. Congy의 특정 lieu-dit, 파셀마다 다른 토양이 와인에 반영된다. Les Maillons와 나란히 마시면 같은 생산자, 같은 마을에서도 파셀에 따라 와인이 얼마나 달라지는지 명확해진다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/dugoupil_2013.jpg" alt="Champagne du Goupil Millésime 2013" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Champagne du Goupil</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Millésime 2013</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">2013 빈티지 · 소규모 도멘</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">도전적인 해를 병에 담는 것은 자신감의 표현이다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Champagne du Goupil의 2013 빈티지. 2013년은 생산자에게 쉽지 않은 해였다. 그 해를 병에 담는다는 것 — 정직하고 솔직한 빈티지 표현이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/jules_brochet_survivants.jpg" alt="Jules Brochet Les Survivants 2021" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Jules Brochet</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Les Survivants 2021</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">PN 60% + CH 40% · 1,501병 · 20% new oak · Brut Nature</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">2021년의 재앙이 만든 역설적인 아름다움.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">2021년 — 서리, 밀듀, 우박. Jules Brochet의 3ha에서 단 2,200kg 수확, 1,501병 생산. '생존자들'의 와인. PN 60% + CH 40%, 20% new oak, brut nature. 극도로 적은 수확량이 만드는 집약도 — 재앙적 조건이 만든 예기치 않게 아름다운 와인.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/dhondt_coullemets.jpg" alt="Adrien Dhondt Les Coullemets 2019" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Adrien Dhondt</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Les Coullemets 2019</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Le Mesnil-sur-Oger · micro-négoce · 2018년 첫 빈티지 · dosage 1.5g/l</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Le Mesnil-sur-Oger의 젊은 micro-négoce.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">2018년 첫 빈티지. 구매 포도로 만드는 micro-négoce이지만 원료는 Le Mesnil-sur-Oger Grand Cru. Les Coullemets 구획, 2023년 2월 디고르주망, dosage 1.5g/l. Le Mesnil의 백악질 미네랄이 선명하게 드러나는 와인 — 생산자는 젊지만 원료가 말을 걸어온다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/dp_rose_2010.jpg" alt="Dom Pérignon Rosé Vintage 2010" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Dom Pérignon</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Rosé Vintage 2010</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">PN 56% + CH 44% + 레드 와인 11% · ~15년 lees 숙성 · 2021년 출시</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">2010년 — DP Rosé의 잊기 어려운 해.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">PN 56% + CH 44% + 레드 와인 11%. 약 15년 lees 숙성, 2021년 출시. 2010 빈티지는 DP에게 표현력이 풍부한 해였다. 레드 와인이 주는 깊이와 긴 숙성이 만드는 복잡성이 균형을 이룬다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/giraud_bdb_2015.jpg" alt="Henri Giraud Blanc de Blancs 2015" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Henri Giraud</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Blanc de Blancs 2015</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Aÿ GC · 100% Chardonnay · Argonne 오크</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Aÿ — Pinot Noir의 Grand Cru에서 만드는 이례적인 Blanc de Blancs.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Henri Giraud는 Aÿ Grand Cru와 Argonne 오크로 유명하다. BdB 2015는 그 오크를 Chardonnay에 적용한 결과. Côte des Blancs 전통 스타일과는 완전히 다른 방향 — 오크와 Aÿ 토양이 만드는 넉넉하고 구조적인 Chardonnay.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/selosse_chantereines.jpg" alt="Jacques Selosse Les Chantereines" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Jacques Selosse</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Les Chantereines</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Avize GC · 솔레라 방식 · ~600병/년 · 도멘 생산량의 1%</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Selosse의 가장 희소한 큐베 중 하나.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Avize 특정 파셀에서 솔레라 방식으로 만들어진다. 연간 약 600병, 도멘 생산량의 1%. 극도로 접근하기 어렵다. 솔레라가 만드는 연속성과 복잡성 — 여러 해가 하나의 잔 안에 겹쳐져 있다. Anselme Selosse 철학의 가장 집약된 표현.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/giraud_argonne_rose_2013.jpg" alt="Henri Giraud Argonne Rosé 2013" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Henri Giraud</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Argonne Rosé 2013</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Aÿ GC · 990병 한정 · Argonne 오크 로제</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">990병. 그게 전부다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Henri Giraud Argonne Rosé 2013, 극소량 생산 하이엔드 큐베. Argonne 오크의 인상이 rosé의 과실과 만나는 방식은 이 와인만이 가진 것이다. 강렬하고 구조적 — 희소성이 와인의 성격을 더 날카롭게 만든다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/dp_p2_2004.jpg" alt="Dom Pérignon P2 Plénitude 2004" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Dom Pérignon</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>P2 Plénitude 2004</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Plénitude 2 · 두 번째 숙성의 삶</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">같은 와인의 두 번째 생애.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Dom Pérignon P2 — Plénitude 2 — 는 일반 DP보다 훨씬 더 긴 숙성 후 출시. 2004 P2는 추가 시간을 통해 다른 차원에 도달했다. 와인이 열리는 방식, 구조가 부드러워지는 방식, 복잡성이 쌓이는 방식 — 모두 다르다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/cristal_2016.jpg" alt="Louis Roederer Cristal 2016 — Brut" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Louis Roederer</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Cristal 2016 — Brut</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">WS 99 / JS 98 / Vinous 100 · 시음 적기 2027–2051</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">점수가 방향을 제시해준다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Cristal 2016은 현재까지 가장 높은 평가를 받은 Cristal 중 하나. WS 99, JS 98, Vinous 100. 시음 적기 2027~2051. 지금 마셔도 이미 훌륭하지만, 시간을 더 줄 이유가 있다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/larogerie_champ_bouton.jpg" alt="La Rogerie Champ Bouton 2020" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">La Rogerie</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Champ Bouton 2020</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Avize GC · 0.35ha · 1959년경 식재 · François Petit + Justine Boxler · ~100–120 케이스/년</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Avize의 0.35ha — 그 작음이 모든 것이다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">La Rogerie는 François Petit와 Justine Boxler의 협업. Champ Bouton 2020, Avize GC의 0.35ha, 1959년경 식재, 연간 약 100~120 케이스. Jacques Selosse의 Les Chantereines와 이웃한 밭 — 포도밭의 역사와 희소성이 와인에 반영된다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/krug_gc_173.jpg" alt="Krug Grande Cuvée 173ème Édition" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Krug</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Grande Cuvée 173ème Édition</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Base 2017 · ~150개 와인, 13개 빈티지 · PN 44% / CH 34% / Meunier 22% · dosage 4.5g/l</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Krug의 가장 복잡한 블렌딩.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Krug Grande Cuvée는 단순한 NV가 아니다. 173ème은 2017 베이스, 약 150개 와인, 13개 빈티지 블렌딩. PN 44% / CH 34% / Meunier 22%, dosage 4.5g/l. GC를 에디션으로 추적하는 것이 Krug를 이해하는 방법이다. 173번째 해석.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/marguet_sapience.jpg" alt="Marguet Sapience 2017" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Marguet</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Sapience 2017</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Meunier 68% + PN 32% · 약 6년 8개월 sur lattes · zero dosage · 바이오다이내믹</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">최악의 빈티지에서 만든 가장 지혜로운 와인 — 이름 그대로.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">2017년은 서리와 우박으로 피해가 극심한 해. Marguet는 Meunier 68% + PN 32%, 약 6년 8개월 sur lattes, zero dosage로 Sapience를 만들었다. 도전적인 빈티지와 바이오다이내믹 farming이 만나서 무엇을 만드는지 보여준다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/parcelles_xx.jpg" alt="Pierre Paillard Les Parcelles XX" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Pierre Paillard</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Les Parcelles XX</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Bouzy GC · 1768년 가문 · 8대째 · 유기농</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">1768년부터 시작된 Bouzy의 이야기.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Pierre Paillard, Bouzy Grand Cru 8대째 가문. Antoine과 Quentin 운영, 유기농 인증. Les Parcelles XX는 여러 파셀의 선별 블렌딩. Bouzy의 남향 포도밭 — 수백 년의 가문이 만드는 감각이 있는 와인이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/brochet_rose.jpg" alt="Emmanuel Brochet Rosé d'Assemblage 2022" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Emmanuel Brochet</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Rosé d'Assemblage 2022</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Meunier 1965 old vine 90% + PN 10% · 11개월 오크 · 6,111병 · WA 94pts</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">1965년 Meunier — 60년 된 포도나무의 로제.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Meunier old vine(1965년 식재) 90% + PN 10%, 11개월 오크, 6,111병, WA 94점. Meunier가 주연이 되는 로제 — 오래된 포도나무가 주는 질감과 복잡성이 있다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/clos_du_mesnil.jpg" alt="Krug Clos du Mesnil 2009" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Krug</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Clos du Mesnil 2009</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Le Mesnil-sur-Oger · 2ha 모노폴 · Blanc de Blancs</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">2ha의 담장으로 둘러싸인 땅, 그 안에서 나오는 것.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Krug Clos du Mesnil, Le Mesnil-sur-Oger 마을 안 2ha 모노폴 포도밭의 Blanc de Blancs. Krug 라인업 중 가장 미네랄적이고 집약된 큐베. 2009 풍성한 빈티지와 Le Mesnil의 차가운 백악질 미네랄이 만나는 지점이 이 와인의 핵심이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/dom_ruinart.jpg" alt="Dom Ruinart Blanc de Blancs 2010" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Dom Ruinart</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Blanc de Blancs 2010</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">100% Chardonnay · Blanc de Blancs · Ruinart 최고 큐베</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Champagne에서 가장 오래된 메종의 Blanc de Blancs.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Dom Ruinart, Ruinart 프레스티지 큐베, 100% Chardonnay Blanc de Blancs. 2010 빈티지는 균형 잡힌 산도와 풍성한 과실이 공존. 섬세하고 우아한 스타일 — Krug나 Cristal과는 다른 방향의 위대함이다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/krug_1998.jpg" alt="Krug Vintage Brut 1998" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Krug</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Vintage Brut 1998</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">1998 빈티지 · 장기 숙성 · 복잡미의 정점</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">20년 이상의 시간이 만든 Krug.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">1998 빈티지는 Pinot Noir의 농익은 과실미와 Chardonnay의 산도가 잘 조화를 이룬 해. Krug의 복잡한 블렌딩과 장기 숙성이 더해진다. 지금 마시는 것이 맞다. 충분히 열렸다.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/grande_recolte.jpg" alt="Pierre Paillard La Grande Récolte 2008" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Pierre Paillard</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>La Grande Récolte 2008</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Bouzy GC · 2008 빈티지 · Pinot Noir</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">2008 빈티지 — Blanc de Blancs만의 것이 아니다.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Bouzy GC의 Pinot Noir 중심으로 2008의 높은 산도와 집약성을 표현한다. Comtes de Champagne와는 완전히 다른 방식으로 2008을 이야기한다. Bouzy 남향 포도밭 — 2008이라는 위대한 해를 Pinot Noir로 끌어낸 와인.</p>
+          </div>
+        </article>
+        <article class="tasting-slide" style="min-width:100%; background:var(--dark-3); border:1px solid rgba(201,168,76,0.18); border-radius:4px; overflow:hidden; box-sizing:border-box;">
+          <div style="position:relative; overflow:hidden;">
+            <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/heurtebise.jpg" alt="Chartogne-Taillet Heurtebise 2022" style="width:100%; display:block; object-fit:contain; background:#0f0d0a; filter:brightness(0.92);" loading="lazy">
+            <div style="position:absolute; bottom:0; left:0; right:0; padding:1.2rem 2rem; background:linear-gradient(to top,rgba(15,13,10,0.92) 0%,transparent 100%);">
+              <span style="font-size:0.64rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); border:1px solid rgba(201,168,76,0.4); padding:0.3rem 0.85rem; border-radius:2px;">테이스팅 노트</span>
+            </div>
+          </div>
+          <div style="padding:2.2rem 2.2rem 2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:clamp(1.3rem,2.5vw,1.8rem); font-weight:700; color:var(--cream); margin-bottom:0.3rem;">Chartogne-Taillet</h3>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--gold); margin-bottom:0.4rem;"><em>Heurtebise 2022</em></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Merfy · Chardonnay · 신세대 테루아 접근</p>
+            <div style="width:2.5rem; height:1px; background:var(--gold); margin-bottom:1.5rem; opacity:0.6;"></div>
+            <p style="font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:rgba(250,247,240,0.65); margin-bottom:1.2rem;">Merfy — Champagne의 경계에서 만드는 Chardonnay.</p>
+            <p style="font-size:0.92rem; line-height:1.9; color:rgba(250,247,240,0.8);">Alexandre Chartogne이 이끄는 Merfy의 생산자. Heurtebise는 Merfy 특정 파셀 Chardonnay, 2022 온난하고 건조한 시즌. Côte des Blancs 전통과는 다른 토양, 다른 위치에서 Chardonnay가 어떻게 표현되는지 보여준다.</p>
+          </div>
+        </article>
+
+      </div>
+      <button onclick="tastingGoKo(Math.max(0,tastingCurrKo-1))" style="position:absolute;top:40%;transform:translateY(-50%);left:0;background:rgba(15,13,10,0.7);border:1px solid rgba(201,168,76,0.15);color:var(--gold);width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;">&#8249;</button>
+      <button onclick="tastingGoKo(Math.min(33,tastingCurrKo+1))" style="position:absolute;top:40%;transform:translateY(-50%);right:0;background:rgba(15,13,10,0.7);border:1px solid rgba(201,168,76,0.15);color:var(--gold);width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;">&#8250;</button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.5rem;" id="tastingDotsKo">
+      <span onclick="tastingGoKo(0)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(1)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(2)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(3)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(4)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(5)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(6)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(7)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(8)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(9)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(10)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(11)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(12)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(13)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(14)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(15)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(16)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(17)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(18)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(19)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(20)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(21)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(22)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(23)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(24)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(25)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(26)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(27)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(28)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(29)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(30)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(31)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(32)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+      <span onclick="tastingGoKo(33)" style="width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(201,168,76,0.3);cursor:pointer;display:inline-block;transition:background 0.3s;"></span>
+
+    </div>
+  </div>
+</section>
+
+<!-- DINING DISPATCHES -->
+<section id="dining" style="padding:7rem 0; border-top:1px solid rgba(201,168,76,0.1);">
+  <div class="container">
+    <p class="section-label">다이닝 기록</p>
+    <h2 class="section-title">Dining <em>Dispatches</em></h2>
+    <div class="divider"></div>
+    <p style="color:rgba(250,247,240,0.6);max-width:600px;line-height:1.9;margin-bottom:3rem;">음식과 와인이 만나는 자리. 레스토랑이 아니라 경험을 기록한다. 코스의 흐름, 페어링의 논리, 그날의 인상.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
+      <a href="#" style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.12);padding:1.8rem;display:block;transition:border-color 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.12)'">
+        <div style="overflow:hidden;margin-bottom:1rem;aspect-ratio:4/3;background:var(--dark-2);">
+          <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/leprive_wine.jpg" alt="Le Privé" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.85);" loading="lazy">
+        </div>
+        <span style="font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">서울 · 청담</span>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:0.5rem 0 0.5rem;color:var(--cream);">Le Privé</h3>
+        <p style="font-size:0.85rem;color:rgba(250,247,240,0.55);line-height:1.7;">프라이빗 다이닝의 정의. 완전한 몰입.</p>
+      </a>
+      <a href="#" style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.12);padding:1.8rem;display:block;transition:border-color 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.12)'">
+        <div style="overflow:hidden;margin-bottom:1rem;aspect-ratio:4/3;background:var(--dark-2);">
+          <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/onjium.jpg" alt="온지음" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.85);" loading="lazy">
+        </div>
+        <span style="font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">서울 · 안국</span>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:0.5rem 0 0.5rem;color:var(--cream);">온지음</h3>
+        <p style="font-size:0.85rem;color:rgba(250,247,240,0.55);line-height:1.7;">한국 전통 음식의 현대적 해석. 발효와 계절.</p>
+      </a>
+      <a href="#" style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.12);padding:1.8rem;display:block;transition:border-color 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.12)'">
+        <div style="overflow:hidden;margin-bottom:1rem;aspect-ratio:4/3;background:var(--dark-2);">
+          <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/sutimun.jpg" alt="수티문" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.85);" loading="lazy">
+        </div>
+        <span style="font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">서울</span>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:0.5rem 0 0.5rem;color:var(--cream);">수티문</h3>
+        <p style="font-size:0.85rem;color:rgba(250,247,240,0.55);line-height:1.7;">독립적인 시각. 경계를 넘는 요리.</p>
+      </a>
+      <a href="#" style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.12);padding:1.8rem;display:block;transition:border-color 0.3s;text-decoration:none;" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.12)'">
+        <div style="overflow:hidden;margin-bottom:1rem;aspect-ratio:4/3;background:var(--dark-2);">
+          <img src="https://raw.githubusercontent.com/champagne-uncle/champagne-uncle/main/hashira.jpg" alt="하시라" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.85);" loading="lazy">
+        </div>
+        <span style="font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">서울</span>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin:0.5rem 0 0.5rem;color:var(--cream);">하시라</h3>
+        <p style="font-size:0.85rem;color:rgba(250,247,240,0.55);line-height:1.7;">기둥. 그 위에 무엇이 올라가는지.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect" style="background:var(--dark-2); padding:7rem 0; text-align:center;">
+  <div class="container">
+    <div style="max-width:560px;margin:0 auto;">
+      <p class="section-label">연락처</p>
+      <h2 class="section-title">함께 <em>마실 수 있다면</em></h2>
+      <div class="divider" style="margin:2rem auto;"></div>
+      <p style="color:rgba(250,247,240,0.6);line-height:1.9;margin-bottom:2.5rem;">샴페인에 관한 이야기, 와인 큐레이션, 레끌레 드 크리스탈 방문 문의는 아래로 연락주세요.</p>
+      <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;">
+        <a href="https://www.instagram.com/treenboy" target="_blank" style="font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;border:1px solid rgba(201,168,76,0.25);padding:0.7rem 1.5rem;color:var(--gold);border-radius:2px;">Instagram @treenboy</a>
+        <a href="https://www.instagram.com/lesclefs_yangjae_wine" target="_blank" style="font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;border:1px solid rgba(201,168,76,0.25);padding:0.7rem 1.5rem;color:var(--gold);border-radius:2px;">@lesclefs_yangjae_wine</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,0.08);display:flex;justify-content:space-between;align-items:center;font-size:0.7rem;color:var(--muted);">
+  <span>© 2026 Champagne Uncle</span>
+  <span>샴페인을 마시는 것이 아니라 이해하는 사람</span>
+  <a href="/" style="color:var(--gold);">English →</a>
+</footer>
+
+<script>
+// WOM Carousel
+let womCurrKo = 0;
+const womTotalKo = 5;
+function womGoKo(dir) { womSetKo(Math.max(0,Math.min(womTotalKo-1,womCurrKo+dir))); }
+function womSetKo(i) {
+  womCurrKo = i;
+  document.getElementById('womTrack').style.transform = 'translateX(-'+i*100+'%)';
+  document.querySelectorAll('#womDotsKo span').forEach((s,j) => s.style.background = j===i ? 'var(--gold)' : 'rgba(201,168,76,0.3)');
+}
+
+// Tasting carousel
+let tastingCurrKo = 0;
+const tastingTotalKo = 34;
+function tastingGoKo(i) {
+  tastingCurrKo = Math.max(0, Math.min(tastingTotalKo-1, i));
+  document.getElementById('tastingTrackKo').style.transform = 'translateX(-'+tastingCurrKo*100+'%)';
+  document.querySelectorAll('#tastingDotsKo span').forEach((s,j) => s.style.background = j===tastingCurrKo ? 'var(--gold)' : 'rgba(201,168,76,0.3)');
+  document.getElementById('tastingResultsKo').innerHTML = '';
+  document.getElementById('tastingInputKo').value = '';
+}
+
+// Tasting search index
+const tastingIndexKo = [
+  {p:'Élise Bougy',c:'Le Mont-Chainqueux',t:'그로워 샴페인 Premier Cru Pinot Noir Meunier 1965 유기농',i:0},
+  {p:'Gaspard Brochet',c:'333.f & Le Lion Tome VII',t:'그로워 샴페인 Écueil Pinot Noir 바이오다이내믹 리덕션 감칠맛',i:1},
+  {p:'Taittinger',c:'Comtes de Champagne 2008',t:'그랑 메종 Blanc de Blancs 2008 Le Mesnil 100점',i:2},
+  {p:'Dom Pérignon',c:'Rosé 2008 Lady Gaga',t:'그랑 메종 Rosé 프레스티지 2008',i:3},
+  {p:'Bollinger',c:'La Grande Année 2014',t:'그랑 메종 Pinot Noir 2014 lees 숙성',i:4},
+  {p:'Jérôme Prévost',c:'La Closerie Grand Cru',t:'그로워 샴페인 Le Mesnil Blanc de Blancs',i:5},
+  {p:'Krug',c:'Vintage 2006',t:'그랑 메종 빈티지 2006',i:6},
+  {p:'Guillaume Selosse',c:'Largillier',t:'그로워 샴페인 perpetual reserve',i:7},
+  {p:'Cédric Bouchard',c:'VV Val Vilaine 2020',t:'그로워 샴페인 Aube 저압력',i:8},
+  {p:'Veuve Clicquot',c:'Cave Privée 1989 Rosé',t:'그랑 메종 올드 빈티지 1989',i:9},
+  {p:'Brigitte Fallon',c:'Avysia',t:'그로워 샴페인',i:10},
+  {p:'Salon',c:'Le Mesnil 2004',t:'그랑 메종 Blanc de Blancs Le Mesnil 2004',i:11},
+  {p:'Aurélien Lurquin',c:'Les Traversées',t:'그로워 샴페인 신진',i:12},
+  {p:'Ulysse Collin',c:'Les Maillons',t:'그로워 샴페인 Congy Blanc de Blancs Côte de Sézanne',i:13},
+  {p:'Ulysse Collin',c:'Les Enfers',t:'그로워 샴페인 Congy Blanc de Blancs',i:14},
+  {p:'Champagne du Goupil',c:'Millésime 2013',t:'그로워 샴페인 2013',i:15},
+  {p:'Jules Brochet',c:'Les Survivants 2021',t:'그로워 샴페인 2021 서리 Brut Nature',i:16},
+  {p:'Adrien Dhondt',c:'Les Coullemets 2019',t:'그로워 샴페인 Le Mesnil micro-négoce 2019',i:17},
+  {p:'Dom Pérignon',c:'Rosé 2010',t:'그랑 메종 Rosé 2010',i:18},
+  {p:'Henri Giraud',c:'Blanc de Blancs 2015',t:'그로워 샴페인 Aÿ Blanc de Blancs',i:19},
+  {p:'Jacques Selosse',c:'Les Chantereines',t:'그로워 샴페인 Avize 솔레라 희소',i:20},
+  {p:'Henri Giraud',c:'Argonne Rosé 2013',t:'그로워 샴페인 Aÿ 로제 한정판',i:21},
+  {p:'Dom Pérignon',c:'P2 Plénitude 2004',t:'그랑 메종 Plénitude 장기 숙성',i:22},
+  {p:'Louis Roederer',c:'Cristal 2016',t:'그랑 메종 Cristal 2016 100점',i:23},
+  {p:'La Rogerie',c:'Champ Bouton 2020',t:'그로워 샴페인 Avize 희소',i:24},
+  {p:'Krug',c:'Grande Cuvée 173ème',t:'그랑 메종 NV 블렌딩',i:25},
+  {p:'Marguet',c:'Sapience 2017',t:'그로워 샴페인 바이오다이내믹 Meunier 2017',i:26},
+  {p:'Pierre Paillard',c:'Les Parcelles XX',t:'그로워 샴페인 Bouzy',i:27},
+  {p:'Emmanuel Brochet',c:'Rosé 2022',t:'그로워 샴페인 Meunier 로제 old vine',i:28},
+  {p:'Krug',c:'Clos du Mesnil 2009',t:'그랑 메종 모노폴 Le Mesnil Blanc de Blancs',i:29},
+  {p:'Dom Ruinart',c:'Blanc de Blancs 2010',t:'그랑 메종 Blanc de Blancs 2010',i:30},
+  {p:'Krug',c:'Vintage 1998',t:'그랑 메종 빈티지 1998',i:31},
+  {p:'Pierre Paillard',c:'La Grande Récolte 2008',t:'그로워 샴페인 Bouzy 2008 Pinot Noir',i:32},
+  {p:'Chartogne-Taillet',c:'Heurtebise 2022',t:'그로워 샴페인 Merfy Chardonnay',i:33},
+];
+
+function tastingFilterKo() {
+  const q = document.getElementById('tastingInputKo').value.toLowerCase().trim();
+  const res = document.getElementById('tastingResultsKo');
+  if (!q) { res.innerHTML=''; return; }
+  const matches = tastingIndexKo.filter(x => (x.p+x.c+x.t).toLowerCase().includes(q));
+  res.innerHTML = matches.slice(0,6).map(x => `<div onclick="tastingGoKo(${x.i})" style="background:var(--dark-3);border:1px solid rgba(201,168,76,0.2);padding:0.6rem 1rem;cursor:pointer;border-radius:2px;font-size:0.8rem;color:var(--cream);" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.2)'">${x.p}<br><span style="color:var(--muted);font-size:0.72rem;">${x.c}</span></div>`).join('');
+}
+</script>
+</body>
+</html>
