@@ -2144,7 +2144,7 @@
           return;
         }
         const ql = q.toLowerCase();
-        const matched = index.filter(it => it.text.includes(ql));
+        const matched = index.filter(it => (it.producer+' '+it.cuvee+' '+it.sub+' '+it.tags.join(' ')).toLowerCase().includes(ql));
 
         // Hide carousel while searching
         carousel.style.display = 'none';
@@ -3287,7 +3287,7 @@
           return;
         }
         const ql = q.toLowerCase();
-        const matched = index.filter(it => it.text.includes(ql));
+        const matched = index.filter(it => (it.producer+' '+it.cuvee+' '+it.sub+' '+it.tags.join(' ')).toLowerCase().includes(ql));
 
         if(carousel) carousel.style.display = 'none';
         if(dotsWrap) dotsWrap.style.display = 'none';
