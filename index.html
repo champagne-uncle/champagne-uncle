@@ -3159,7 +3159,9 @@
       // Build index: for each slide extract producer, cuvee, tags, intro text
       const index = slides.map((s, i) => {
         const h3  = s.querySelector('h3');
-        const em  = s.querySelector('h3 + p em');
+        const emEl = s.querySelector('h3 + p em');
+        const cuveeP = s.querySelector('h3 + p');
+        const em  = emEl || cuveeP;
         const sub = s.querySelector('h3 + p + p');
         const img = s.querySelector('img');
         const tags= Array.from(s.querySelectorAll('[style*="border-radius:2px"]')).map(t=>t.textContent.trim());
