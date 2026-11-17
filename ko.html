@@ -2484,8 +2484,11 @@
         const ql = q.toLowerCase();
         const matched = index.filter(it => {
           const hay = (it.producer+' '+it.cuvee+' '+it.sub+' '+it.tags.join(' ')).toLowerCase();
-          const words = hay.split(/[^a-z0-9àâäéèêëïîôöùûüçÿœæ]+/i);
-          return words.some(w => w.startsWith(ql)) || hay.includes(' '+ql);
+          const words = hay.split(/[^a-z0-9àâäéèêëïîôöùûüçÿœæ]+/i).filter(Boolean);
+          if(ql.length <= 3){
+            return words.some(w => w === ql);
+          }
+          return words.some(w => w.startsWith(ql));
         });
 
         // Hide carousel while searching
@@ -3631,8 +3634,11 @@
         const ql = q.toLowerCase();
         const matched = index.filter(it => {
           const hay = (it.producer+' '+it.cuvee+' '+it.sub+' '+it.tags.join(' ')).toLowerCase();
-          const words = hay.split(/[^a-z0-9àâäéèêëïîôöùûüçÿœæ]+/i);
-          return words.some(w => w.startsWith(ql)) || hay.includes(' '+ql);
+          const words = hay.split(/[^a-z0-9àâäéèêëïîôöùûüçÿœæ]+/i).filter(Boolean);
+          if(ql.length <= 3){
+            return words.some(w => w === ql);
+          }
+          return words.some(w => w.startsWith(ql));
         });
 
         if(carousel) carousel.style.display = 'none';
