@@ -3920,12 +3920,12 @@
         }
         const ql = q.toLowerCase();
         const matched = index.filter(it => {
-          const hay = (it.producer+' '+it.cuvee+' '+it.sub+' '+it.tags.join(' ')).toLowerCase();
-          const words = hay.split(/[^a-z0-9àâäéèêëïîôöùûüçÿœæ]+/i).filter(Boolean);
+          const hay = (it.name+' '+it.sub+' '+it.tags.join(' ')).toLowerCase();
+          const words = hay.split(/[^a-z0-9àâäéèêëïîôöùûüçÿœæ가-힣]+/i).filter(Boolean);
           if(ql.length <= 3){
-            return words.some(w => w === ql);
+            return words.some(w => w === ql) || hay.includes(ql);
           }
-          return words.some(w => w.startsWith(ql));
+          return words.some(w => w.startsWith(ql)) || hay.includes(ql);
         });
 
         if(carousel) carousel.style.display = 'none';
